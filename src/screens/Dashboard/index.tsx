@@ -8,8 +8,10 @@ import {
   User,
   UserGreeting,
   UseName,
-  UserWrapper
+  UserWrapper,
+  Icon
 } from './styles';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 const Dashboard: React.FC = () => {
   return (
@@ -25,6 +27,8 @@ const Dashboard: React.FC = () => {
               <UseName>Daniel</UseName>
             </User>
           </UserInfo>
+
+          <Icon name="power" />
         </UserWrapper>
       </Header>
     </Container>
