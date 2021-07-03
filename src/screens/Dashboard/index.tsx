@@ -10,10 +10,11 @@ import {
   UseName,
   UserWrapper,
   Icon,
-  HighlightCards
+  HighlightCards,
+  Transactions,
+  Title,
 } from './styles';
-import { RFValue } from 'react-native-responsive-fontsize';
-import HighlightCard from '../../components/HighlightCard';
+import { HighlightCard, TransactionCard } from '../../components';
 
 const Dashboard: React.FC = () => {
   return (
@@ -54,6 +55,13 @@ const Dashboard: React.FC = () => {
           lastTransaction="Última entrada dia 03 de julho de 2021"
         />
       </HighlightCards>
+
+
+      <Transactions>
+        <Title>Listagem</Title>
+
+        <TransactionCard />
+      </Transactions>
     </Container>
   );
 }
