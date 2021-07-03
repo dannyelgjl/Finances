@@ -10,6 +10,10 @@ import {
   LastTransaction
 } from './styles';
 
+interface IProps {
+
+}
+
 const HighlightCard: React.FC = () => {
   return (
     <Container>
