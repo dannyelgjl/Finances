@@ -35,9 +35,24 @@ const Dashboard: React.FC = () => {
       </Header>
 
       <HighlightCards>
-        <HighlightCard />
-        <HighlightCard />
-        <HighlightCard />
+        <HighlightCard
+          type="up"
+          title="Entradas"
+          amount="R$ 17.400,00"
+          lastTransaction="Última entrada dia 03 de julho de 2021"
+        />
+        <HighlightCard
+          type="down"
+          title="Saídas"
+          amount="R$ 15.400,00"
+          lastTransaction="Última Saída dia 03 de julho de 2021"
+        />
+        <HighlightCard
+          type="total"
+          title="Total"
+          amount="R$ 20.400,00"
+          lastTransaction="Última entrada dia 03 de julho de 2021"
+        />
       </HighlightCards>
     </Container>
   );
