@@ -13,10 +13,53 @@ import {
   HighlightCards,
   Transactions,
   Title,
+  TransactionsList,
 } from './styles';
 import { HighlightCard, TransactionCard } from '../../components';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { TransactionCardProps } from '../../components/TransactionCard/types';
+
+export interface DataListProps extends TransactionCardProps {
+  id: string;
+}
 
 const Dashboard: React.FC = () => {
+  const data: DataListProps[] = [
+    {
+      id: "1",
+      type: "positive",
+      title: "Desenvolvimento de Aplicativos",
+      amount: "R$ 12.000,00",
+      category: {
+        name: 'Vendar',
+        icon: 'dollar-sign'
+      },
+      date: "03/07/2021",
+    },
+    {
+      id: "2",
+      type: "negative",
+      title: "Hamburgueria RenguiRoll",
+      amount: "R$ 12.000,00",
+      category: {
+        name: 'Alimentação',
+        icon: 'coffee'
+      },
+      date: "05/07/2021",
+    },
+    {
+      id: "3",
+      type: "negative",
+      title: "Aluguel do apartamento",
+      amount: "R$ 12.000,00",
+      category: {
+        name: 'Casa',
+        icon: 'shopping-bag'
+      },
+      date: "01/07/2021",
+    },
+  ];
+
   return (
     <Container>
       <Header>
@@ -60,7 +103,13 @@ const Dashboard: React.FC = () => {
       <Transactions>
         <Title>Listagem</Title>
 
-        <TransactionCard />
+        <TransactionsList
+          data={data}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <TransactionCard data={item} />
+          )}
+        />
       </Transactions>
     </Container>
   );
