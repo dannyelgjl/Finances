@@ -16,7 +16,6 @@ import {
   TransactionsList,
 } from './styles';
 import { HighlightCard, TransactionCard } from '../../components';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { TransactionCardProps } from '../../components/TransactionCard/types';
 
 export interface DataListProps extends TransactionCardProps {
@@ -98,7 +97,6 @@ const Dashboard: React.FC = () => {
           lastTransaction="Última entrada dia 03 de julho de 2021"
         />
       </HighlightCards>
-
 
       <Transactions>
         <Title>Listagem</Title>
