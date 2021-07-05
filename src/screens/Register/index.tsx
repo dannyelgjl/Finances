@@ -1,7 +1,7 @@
 import React from 'react';
-import { Input } from '../../components'
+import { Input, Button } from '../../components'
 
-import { Container, Header, Title, Form } from './styles';
+import { Container, Header, Title, Form, Fields } from './styles';
 
 const Register: React.FC = () => {
   return (
@@ -13,15 +13,19 @@ const Register: React.FC = () => {
       </Header>
 
       <Form>
-        <Input
-          placeholder="Nome"
-        />
+        <Fields>
+          <Input
+            placeholder="Nome"
+          />
+          <Input
+            placeholder="Password"
+          />
+        </Fields>
 
-        <Input
-          placeholder="Password"
+        <Button
+          title="Enviar"
         />
       </Form>
-
     </Container>
   );
 }
