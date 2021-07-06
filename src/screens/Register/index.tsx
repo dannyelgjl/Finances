@@ -1,9 +1,22 @@
-import React from 'react';
-import { Input, Button } from '../../components'
+import React, { useState } from 'react';
+import { Input, Button, TransactionTypeButton } from '../../components'
 
-import { Container, Header, Title, Form, Fields } from './styles';
+import {
+  Container,
+  Header,
+  Title,
+  Form,
+  Fields,
+  TransactionsTypes
+} from './styles';
 
-const Register: React.FC = () => {
+const Register = () => {
+  const [transactionType, setTransactionType] = useState('');
+
+  const handleTransactionsTypesSelect = (type: 'up' | 'down') => {
+    setTransactionType(type);
+  };
+
   return (
     <Container>
       <Header>
@@ -20,6 +33,25 @@ const Register: React.FC = () => {
           <Input
             placeholder="Password"
           />
+
+          <TransactionsTypes>
+            <TransactionTypeButton
+              type="up"
+              title="Income"
+              onPress={() => handleTransactionsTypesSelect('up')}
+              isActive={transactionType === 'up'}
+            />
+
+
+            <TransactionTypeButton
+              type="down"
+              title="Outcome"
+              onPress={() => handleTransactionsTypesSelect('down')}
+              isActive={transactionType === 'down'}
+            />
+          </TransactionsTypes>
+
+
         </Fields>
 
         <Button
