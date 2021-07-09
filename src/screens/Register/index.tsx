@@ -150,7 +150,6 @@ const Register = () => {
         </Modal>
       </Container>
     </TouchableWithoutFeedback>
-
   );
 }
 

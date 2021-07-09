@@ -1,5 +1,7 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import Dashboard from './src/screens/Register';
+import Dashboard from './src/screens/Dashboard';
+import Register from './src/screens/Register';
 import { ThemeProvider } from 'styled-components';
 import AppLoading from 'expo-app-loading';
 import theme from './src/styles/theme';
