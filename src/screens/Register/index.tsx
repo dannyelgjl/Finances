@@ -76,7 +76,7 @@ const Register = () => {
       return Alert.alert('Selecione a categoria');
     };
 
-    const data = {
+    const newTransaction = {
       name: form.name,
       amount: form.amount,
       transactionType,
@@ -84,14 +84,19 @@ const Register = () => {
     }
 
     try {
-      await AsyncStorage.setItem(dataKey, JSON.stringify(data));
+      const data = await AsyncStorage.getItem(dataKey);
+      const currentData = data ? JSON.parse(data) : [];
+
+      const dataFormatted = [...currentData, newTransaction];
+
+      await AsyncStorage.setItem(dataKey, JSON.stringify(dataFormatted));
 
     } catch (error) {
       console.log(error);
       Alert.alert('Não foi possível salvar');
     }
 
-    console.log(data);
+    console.log(newTransaction);
   };
 
   useEffect(() => {
@@ -102,7 +107,7 @@ const Register = () => {
     }
 
     loadData();
-  }, []);
+  }, []);;
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
