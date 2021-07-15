@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import uuid from 'react-native-uuid';
+import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import {
   Keyboard,
@@ -43,6 +45,7 @@ const schame = Yup.object().shape({
 });
 
 const Register = () => {
+  const navigation = useNavigation();
   const [transactionType, setTransactionType] = useState('');
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
   const [category, setCategory] = useState({
@@ -51,7 +54,7 @@ const Register = () => {
   });
   const dataKey = '@finance:transactions';
 
-  const { control, handleSubmit, formState: { errors } } = useForm({
+  const { control, handleSubmit, reset, formState: { errors } } = useForm({
     resolver: yupResolver(schame)
   });
 
@@ -77,10 +80,12 @@ const Register = () => {
     };
 
     const newTransaction = {
+      id: String(uuid.v4()),
       name: form.name,
       amount: form.amount,
       transactionType,
       category: category.key,
+      date: new Date(),
     }
 
     try {
@@ -91,6 +96,14 @@ const Register = () => {
 
       await AsyncStorage.setItem(dataKey, JSON.stringify(dataFormatted));
 
+      reset();
+      setTransactionType('');
+      setCategory({
+        key: '',
+        name: '',
+      });
+
+      navigation.navigate('Dashboard');
     } catch (error) {
       console.log(error);
       Alert.alert('Não foi possível salvar');
@@ -99,15 +112,6 @@ const Register = () => {
     console.log(newTransaction);
   };
 
-  useEffect(() => {
-    async function loadData() {
-      const data = await AsyncStorage.getItem(dataKey);
-
-      console.log(JSON.parse(data!));
-    }
-
-    loadData();
-  }, []);;
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
