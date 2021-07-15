@@ -52,7 +52,6 @@ const Register = () => {
     key: 'category',
     name: 'Categoria',
   });
-  const dataKey = '@finance:transactions';
 
   const { control, handleSubmit, reset, formState: { errors } } = useForm({
     resolver: yupResolver(schame)
@@ -89,6 +88,8 @@ const Register = () => {
     }
 
     try {
+      const dataKey = '@finance:transactions';
+
       const data = await AsyncStorage.getItem(dataKey);
       const currentData = data ? JSON.parse(data) : [];
 
